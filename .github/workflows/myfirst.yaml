@@ -1,24 +1,26 @@
-name: My First Workflow
-on: [push] 
+name: Generate Workflow File
+on: push
 jobs:
-  Checkout:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    Build_Job_1: 
+      runs-on: ubuntu-latest
+      steps:
+      - name: Install Cowsay
+        run: sudo apt-get install cowsay -y
+      - name: Execute Cowsay
+        run: cowsay -f tux "Hello, World!" >> tux.txt
 
-      - name: Muti line commands
-        run: |
-          echo "This is a multi-line command"
-          ls -la
-          cat README.md
-      - name: Install cowsay
-        run: sudo apt-get install -y cowsay
+    Test_Job_2: 
+        runs-on: ubuntu-latest
+        steps:
+        - name: Sleep for 10 seconds
+          run: sleep 10
+        - name: Test File Exists
+          run: grep -i "tux" tux.txt
 
-      - name: generate ascii art work
-        run: cowsay -f dragon "Hello, World!" >> dragon.txt
-
-      - name: Read ascii art
-        run: cat dragon.txt
-        
-
+    Deploy_Job_3: 
+        runs-on: ubuntu-latest
+        steps:
+        - name: read file
+          run: cat tux.txt
+        - name: Deploy
+          run: echo "Deployment completed successfully!"
