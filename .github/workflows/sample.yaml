@@ -1,20 +1,21 @@
-name: My Second Workflow
+name: Step01 workflow
 on: push
 jobs:
-  FirstJob:
+  cheking-out repo:
     runs-on: ubuntu-latest
     steps:
-      - name: Welcome Message
-        run: echo "Welcome to my first GitHub Actions workflow!"
-
-      - name: checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install ascii-art
-        run: sudo apt-get install -y asciiquarium
+      - name: Display files in the repository
+        run: |
+          echo "Files in the repository:"
+          ls -la
 
-      - name: Display Ascii Art
-        run: asciiquarium
+      - name: Display current working directory
+        run: pwd
 
-      - name: List Files
-        run: ls
+      - name: Display contents of input file
+        run: |
+          echo "Contents of input file:"
+          cat input
