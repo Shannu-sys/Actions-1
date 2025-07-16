@@ -10,8 +10,9 @@ jobs:
         run: cowsay -f tux "Hello, World!" >> tux.txt
       - name: upload file
         uses: actions/upload-artifact@v4
-        with:
+        with: 
           name: tux-file
+          path: tux.txt
 
     Test_Job_2: 
         runs-on: ubuntu-latest
