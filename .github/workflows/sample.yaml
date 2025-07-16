@@ -6,9 +6,12 @@ jobs:
     steps:
       - name: Welcome Message
         run: echo "Welcome to my first GitHub Actions workflow!"
+        
+      - name: checkout
+        uses: actions/checkout@v4
 
-      # - name: List Files
-      #   run: ls
+      - name: List Files
+        run: ls
 
-      # - name: Read Files
-      #   run: cat README.md
+      - name: Read Files
+        run: cat README.md
