@@ -1,7 +1,7 @@
 name: Step01 workflow
 on: push
 jobs:
-  cheking-out repo:
+  cheking-outrepo:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
