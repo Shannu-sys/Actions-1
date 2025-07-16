@@ -1,7 +1,7 @@
 name: My First Workflow
 on: [push] 
 jobs:
-  build:
+  Checkout:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -13,3 +13,6 @@ jobs:
           ls -la
           cat README.md
           
+      - name: generate ascii art work
+        run: cowsay -f dragon "Hello, World!" >> dragon.txt
+
