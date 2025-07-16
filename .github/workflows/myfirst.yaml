@@ -12,7 +12,13 @@ jobs:
           echo "This is a multi-line command"
           ls -la
           cat README.md
-          
+      - name: Install cowsay
+        run: sudo apt-get install -y cowsay
+
       - name: generate ascii art work
         run: cowsay -f dragon "Hello, World!" >> dragon.txt
+
+      - name: Read ascii art
+        run: cat dragon.txt
+        
 
