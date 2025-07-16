@@ -8,18 +8,32 @@ jobs:
         run: sudo apt-get install cowsay -y
       - name: Execute Cowsay
         run: cowsay -f tux "Hello, World!" >> tux.txt
+      - name: upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: tux-file
 
     Test_Job_2: 
         runs-on: ubuntu-latest
+        needs: Build_Job_1
         steps:
+        - name: Download Artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: tux-file
         - name: Sleep for 10 seconds
           run: sleep 10
         - name: Test File Exists
           run: grep -i "tux" tux.txt
 
     Deploy_Job_3: 
+        needs: [Test_Job_2, Build_Job_1]
         runs-on: ubuntu-latest
         steps:
+        - name: Download Artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: tux-file
         - name: read file
           run: cat tux.txt
         - name: Deploy
