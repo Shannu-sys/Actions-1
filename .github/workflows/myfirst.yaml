@@ -26,7 +26,7 @@ jobs:
             name: dragon-file
 
         - name: Test File Exists
-          run: grep -i "dragon" dragon.txt
+          run: grep -i "Hello" dragon.txt
 
     Deploy_Job_3: 
         needs: [Test_Job_2, Build_Job_1]
